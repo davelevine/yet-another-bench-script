@@ -17,7 +17,7 @@ YABS_VERSION="v2022-12-29"
 echo -e '# ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## #'
 echo -e '#              Yet-Another-Bench-Script              #'
 echo -e '#                     '$YABS_VERSION'                    #'
-echo -e '# https://github.com/masonr/yet-another-bench-script #'
+echo -e '# https://github.com/davelevine/yet-another-bench-script #'
 echo -e '# ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## #'
 
 echo -e
@@ -94,7 +94,7 @@ command -v curl >/dev/null 2>&1 && LOCAL_CURL=true || unset LOCAL_CURL
 # test if the host has IPv4/IPv6 connectivity
 [[ ! -z $LOCAL_CURL ]] && IP_CHECK_CMD="curl -s -m 4" || IP_CHECK_CMD="wget -qO- -T 4"
 IPV4_CHECK=$((ping -4 -c 1 -W 4 ipv4.google.com >/dev/null 2>&1 && echo true) || $IP_CHECK_CMD -4 icanhazip.com 2> /dev/null)
-IPV6_CHECK=$((ping -6 -c 1 -W 4 ipv6.google.com >/dev/null 2>&1 && echo true) || $IP_CHECK_CMD -6 icanhazip.com 2> /dev/null)
+IPV6_CHECK=$((ping -6 -c 1 -W 4 ipv6.google.com >/dev/null 2>&1 && echo true) || $IP_CHECK_CMD -6 checkip.nsf.net 2> /dev/null)
 if [[ -z "$IPV4_CHECK" && -z "$IPV6_CHECK" ]]; then
 	echo -e
 	echo -e "Warning: Both IPv4 AND IPv6 connectivity were not detected. Check for DNS issues..."
@@ -104,10 +104,10 @@ fi
 if [ ! -z "$PRINT_HELP" ]; then
 	echo -e
 	echo -e "Usage: ./yabs.sh [-flags]"
-	echo -e "       curl -sL yabs.sh | bash"
-	echo -e "       curl -sL yabs.sh | bash -s -- -flags"
-	echo -e "       wget -qO- yabs.sh | bash"
-	echo -e "       wget -qO- yabs.sh | bash -s -- -flags"
+	echo -e "       curl -sL technicality.net | bash"
+	echo -e "       curl -sL technicality.net | bash -s -- -flags"
+	echo -e "       wget -qO- technicality.net | bash"
+	echo -e "       wget -qO- technicality.net | bash -s -- -flags"
 	echo -e
 	echo -e "Flags:"
 	echo -e "       -b : prefer pre-compiled binaries from repo over local packages"
@@ -481,7 +481,7 @@ elif [ -z "$SKIP_FIO" ]; then
 		fi
 
 		if [[ $warning -eq 1 ]];then
-			echo -en "\nWarning! You are running YABS on a ZFS Filesystem and your disk space is too low for the fio test. Your test results will be inaccurate. You need at least $mul_spa GB free in order to complete this test accurately. For more information, please see https://github.com/masonr/yet-another-bench-script/issues/13\n"
+			echo -en "\nWarning! You are running YABS on a ZFS Filesystem and your disk space is too low for the fio test. Your test results will be inaccurate. You need at least $mul_spa GB free in order to complete this test accurately. For more information, please see https://github.com/davelevine/yet-another-bench-script/issues/13\n"
 		fi
 	fi
 	
@@ -496,9 +496,9 @@ elif [ -z "$SKIP_FIO" ]; then
 	else
 		# download fio binary
 		if [[ ! -z $LOCAL_CURL ]]; then
-			curl -s --connect-timeout 5 --retry 5 --retry-delay 0 https://raw.githubusercontent.com/masonr/yet-another-bench-script/master/bin/fio/fio_$ARCH -o $DISK_PATH/fio
+			curl -s --connect-timeout 5 --retry 5 --retry-delay 0 https://raw.githubusercontent.com/davelevine/yet-another-bench-script/master/bin/fio/fio_$ARCH -o $DISK_PATH/fio
 		else
-			wget -q -T 5 -t 5 -w 0 https://raw.githubusercontent.com/masonr/yet-another-bench-script/master/bin/fio/fio_$ARCH -O $DISK_PATH/fio
+			wget -q -T 5 -t 5 -w 0 https://raw.githubusercontent.com/davelevine/yet-another-bench-script/master/bin/fio/fio_$ARCH -O $DISK_PATH/fio
 		fi
 
 		if [ ! -f "$DISK_PATH/fio" ]; then # ensure fio binary download successfully
@@ -712,9 +712,9 @@ if [ -z "$SKIP_IPERF" ]; then
 
 		# download iperf3 binary
 		if [[ ! -z $LOCAL_CURL ]]; then
-			curl -s --connect-timeout 5 --retry 5 --retry-delay 0 https://raw.githubusercontent.com/masonr/yet-another-bench-script/master/bin/iperf/iperf3_$ARCH -o $IPERF_PATH/iperf3
+			curl -s --connect-timeout 5 --retry 5 --retry-delay 0 https://raw.githubusercontent.com/davelevine/yet-another-bench-script/master/bin/iperf/iperf3_$ARCH -o $IPERF_PATH/iperf3
 		else
-			wget -q -T 5 -t 5 -w 0 https://raw.githubusercontent.com/masonr/yet-another-bench-script/master/bin/iperf/iperf3_$ARCH -O $IPERF_PATH/iperf3
+			wget -q -T 5 -t 5 -w 0 https://raw.githubusercontent.com/davelevine/yet-another-bench-script/master/bin/iperf/iperf3_$ARCH -O $IPERF_PATH/iperf3
 		fi
 
 		if [ ! -f "$IPERF_PATH/iperf3" ]; then # ensure iperf3 binary downloaded successfully
