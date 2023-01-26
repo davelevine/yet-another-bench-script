@@ -1,23 +1,21 @@
 # Yet-Another-Bench-Script
 
-Here's an attempt to create _yet another_ damn Linux server *bench*marking _script_.
+Here's an attempt to create _yet another_ damn Linux server _bench_marking_script_.
 
-![](https://user-images.githubusercontent.com/8313125/106475387-e1f6da00-6473-11eb-918c-c785ebeef8b9.jpg)
+![https://user-images.githubusercontent.com/8313125/106475387-e1f6da00-6473-11eb-918c-c785ebeef8b9.jpg](https://user-images.githubusercontent.com/8313125/106475387-e1f6da00-6473-11eb-918c-c785ebeef8b9.jpg)
 Logo design by [Dian Pratama](https://github.com/dianp)
 
 This script isn't an attempt to be a golden standard. It's just yet another bench script to add to your arsenal. Included are several tests that I think are most beneficial for the end-user. If there's features that you would like to see added, feel free to submit an issue describing your feature request or fork the project!
 
-View YABS usage stats [here](https://yabs.rowe.sh).
-
 ## How to Run
 
-```
+```shell
 curl -sL yabs.sh | bash
 ```
 
-or 
+or
 
-```
+```shell
 wget -qO- yabs.sh | bash
 ```
 
@@ -33,7 +31,7 @@ This script has been tested on the following Linux distributions: CentOS 6+, Deb
 
 By default, the script runs all three tests described in the next section below. In the event that you wish to skip one or more of the tests, use the commands below:
 
-```
+```shell
 curl -sL yabs.sh | bash -s -- -flags
 ```
 
@@ -57,7 +55,7 @@ Options can be grouped together to skip multiple tests, i.e. `-fg` to skip the d
 
 Results from running this script can be sent to your benchmark results website of choice in JSON format. Invoke the `-s` flag and pass the URL to where the results should be submitted to:
 
-```
+```shell
 curl -sL yabs.sh | bash -s -- -s "https://example.com/yabs/post"
 ```
 
@@ -77,7 +75,7 @@ This script relies on external binaries in order to complete the performance tes
 
 ## Example Output
 
-```
+```markdown
 # ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## #
 #              Yet-Another-Bench-Script              #
 #                     v2020-09-21                    #
@@ -158,7 +156,8 @@ Full Test       | https://browser.geekbench.com/v5/cpu/3844555
 This script was inspired by several great benchmarking scripts out there, including, but not limited to, [bench.sh](https://bench.sh/), [nench.sh](https://github.com/n-st/nench), [ServerBench](https://github.com/K4Y5/ServerBench), among others. Members of the [HostedTalk](https://hostedtalk.net), [LowEndSpirit](https://talk.lowendspirit.com), and [LowEndTalk](https://www.lowendtalk.com) hosting-related communities play a pivotal role in testing, evaluating, and shaping this script as it matures.
 
 ## License
-```
+
+```plaintext
             DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
                     Version 2, December 2004
 
