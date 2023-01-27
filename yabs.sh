@@ -104,10 +104,10 @@ fi
 if [ ! -z "$PRINT_HELP" ]; then
 	echo -e
 	echo -e "Usage: ./yabs.sh [-flags]"
-	echo -e "       curl -sL technicality.net | bash"
-	echo -e "       curl -sL technicality.net | bash -s -- -flags"
-	echo -e "       wget -qO- technicality.net | bash"
-	echo -e "       wget -qO- technicality.net | bash -s -- -flags"
+	echo -e "       curl -sL levine.xyz | bash"
+	echo -e "       curl -sL levine.xyz | bash -s -- -flags"
+	echo -e "       wget -qO- levine.xyz | bash"
+	echo -e "       wget -qO- levine.xyz | bash -s -- -flags"
 	echo -e
 	echo -e "Flags:"
 	echo -e "       -b : prefer pre-compiled binaries from repo over local packages"
